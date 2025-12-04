@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yeşim 💖</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: radial-gradient(circle at top, #ffdee9, #b5fffc, #fce3ff);
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      color: #fff;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 120px;
+      font-size: 3em;
+      color: #ff2f75;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+      animation: glow 2s infinite alternate;
+    }
+
+    p {
+      font-size: 1.3em;
+      width: 80%;
+      max-width: 700px;
+      margin: 20px auto;
+      color: #fff;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    #p1 { animation-delay: 1s; }
+    #p2 { animation-delay: 3s; }
+    #p3 { animation-delay: 5s; }
+    #final {
+      font-size: 2em;
+      font-weight: bold;
+      color: #ff0f6b;
+      margin-top: 60px;
+      text-shadow: 0 0 10px rgba(255, 0, 102, 0.8);
+      opacity: 0;
+      animation: fadeInUp 3s forwards 7s;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff77b9, 0 0 20px #ff2f75; }
+      to { text-shadow: 0 0 20px #ff99c8, 0 0 30px #ff2f75; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff2f75;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff2f75;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
+
+    @keyframes float {
+      0% { bottom: -50px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { bottom: 110%; opacity: 0; }
+    }
+
+    /* Müzik butonu */
+    .music-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #ff2f75;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+      transition: 0.3s;
+    }
+    .music-btn:hover { background: #ff5c93; }
+  </style>
+</head>
+<body>
+
+  <button class="music-btn" onclick="toggleMusic()">🎵 Müzik</button>
+
+  <h1>Yeşim 💖</h1>
+  <p id="p1">Bu sayfayı sana özel hazırladım... çünkü kalbim ne zaman seni düşünse, yüzümde bir gülümseme beliriyor.</p>
+  <p id="p2">Gözlerin, sabah güneşi gibi içimi ısıtıyor... gülüşünse tüm dünyayı susturuyor.</p>
+  <p id="p3">Sana baktığımda, kalbimin gerçekten “ev” dediği yeri bulduğumu hissediyorum.</p>
+  <div id="final">Yeşim... benim sevgilim olur musun? 💞</div>
+
+  <!-- Müzik -->
+  <audio id="bgMusic" loop>
+    <source src="ILinkeMeBetter.mp3" controls></audio>
+  </audio>
+
+  <script>
+    // Kalp efekti
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+
+    // Müzik kontrolü
+    const music = document.getElementById("bgMusic");
+    let isPlaying = false;
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+      } else {
+        music.play();
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+
+</body>
+</html>
